@@ -5,7 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.navigation.findNavController
+import android.content.Intent
+//import kotlinx.android.synthetic.main.activity_main
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,5 +38,14 @@ class MainActivity : AppCompatActivity() {
             println("click on button 3")
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val answer = 42
+        val intent = Intent(this, NewActivity::class.java).apply { putExtra("ANSWER", answer) }
+        findViewById<Button>(R.id.button4).setOnClickListener {
+            startActivity(intent)
+        }
     }
 }
